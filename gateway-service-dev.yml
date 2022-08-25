@@ -2,10 +2,6 @@ server:
   port: 8080
 
 spring:
-  eureka:
-    client:
-      service-url:
-        defaultZone: http://localhost:8761/eureka
   cloud:
     gateway:
       routes:
@@ -17,4 +13,7 @@ spring:
           uri: http://localhost:8084/
           predicates:
             - Path=/catalogs/**
-
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
