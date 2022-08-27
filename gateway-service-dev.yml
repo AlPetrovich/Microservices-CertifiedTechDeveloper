@@ -4,15 +4,29 @@ server:
 spring:
   cloud:
     gateway:
+      default-filters:
+        - name: InfoFilter
       routes:
-        - id: movieRoute
-          uri: lb://movie-service
-          predicates:
+        - id: movieRoute 
+          uri: lb://movie-service 
+          predicates: 
             - Path=/movies/**
-        - id: catalogRoute
-          uri: lb://catalog-service
-          predicates:
+        - id: catalogRoute 
+          uri: lb://catalog-service 
+          predicates: 
             - Path=/catalogs/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+info:
+  app:
+    name: gateway-service
+    description: Gateway Service created for Parcial
+    version: 1.0.0
+
 eureka:
   client:
     service-url:

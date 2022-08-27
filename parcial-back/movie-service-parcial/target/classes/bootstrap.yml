@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: movie-service
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-service
+  profiles:
+    active: dev
